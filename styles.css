@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+.gamecontainer {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    margin: 2rem auto;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+}
+.square {
+    position: relative;
+    border: 3px black solid;
+}
+
+.square > p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6rem;
+}
+
+.start {
+    height: 3rem;
+    width: 6rem;
+    background-color: rgb(40, 148, 40);
+    border-radius: 5%;
+    font-size: 1.5rem;
+    color: white;
+}
