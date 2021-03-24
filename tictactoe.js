@@ -9,10 +9,9 @@ const winCombos = [
   [2, 4, 6],
 ];
 
-let gameTracker = [];
-let turnX = 'X',
-  turnO = 'O',
-  turn;
+let gameTracker = [], turn;
+const turnX = 'X',
+  turnO = 'O';
 
 function initializeGame() {
   $(document).ready(function () {
