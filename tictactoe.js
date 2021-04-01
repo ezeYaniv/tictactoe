@@ -13,27 +13,23 @@ let gameTracker = [], turn;
 const turnX = 'X',
   turnO = 'O';
 
-function initializeGame() {
+function playGame() {
   $(document).ready(function () {
-    $('.start').css('display', 'none');
-    $('.square').children('p').text('');
-    gameTracker = [];
-    turn = turnX;
-    $('h1').text('Player ' + turn + ' Turn');
+    initializeGame();
+
     $('.square').click(function () {
       makeMove($(this));
-      if (!checkWinDraw()) {
-        turn = turn == turnX ? turnO : turnX;
-        $('h1').text('Player ' + turn + ' Turn');
-      } else if(checkWinDraw() == 'tie') {
-        $('h1').text('Draw!');
-        endGame();
-      } else {
-        $('h1').text('Player '+turn+" wins!");
-        endGame();
-      }
+      endTurn();
     });
   });
+}
+
+function initializeGame() {
+  $('.start').css('display', 'none');
+  $('.square').children('p').text('');
+  gameTracker = [];
+  turn = turnX;
+  $('h1').text('Player ' + turn + ' Turn');
 }
 
 function makeMove(square) {
@@ -43,6 +39,19 @@ function makeMove(square) {
     gameTracker[squareNum - 1] = turn;
   } else {
     alert('That square is taken, please choose another.');
+  }
+}
+
+function endTurn() {
+  if (!checkWinDraw()) {
+    turn = turn == turnX ? turnO : turnX;
+    $('h1').text('Player ' + turn + ' Turn');
+  } else if(checkWinDraw() == 'tie') {
+    $('h1').text('Draw!');
+    endGame();
+  } else {
+    $('h1').text('Player '+turn+" wins!");
+    endGame();
   }
 }
 
