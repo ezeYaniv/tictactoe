@@ -19,12 +19,12 @@ function playGame() {
 
     $('.square').click(function () {
       makeMove($(this));
-      endTurn();
+      endTurn(gameTracker);
     });
   });
 }
 
-function initializeGame() {
+const initializeGame = () => {
   $('.start').css('display', 'none');
   $('.square').children('p').text('');
   gameTracker = [];
@@ -32,7 +32,7 @@ function initializeGame() {
   $('h1').text('Player ' + turn + ' Turn');
 }
 
-function makeMove(square) {
+const makeMove = (square) => {
   if (square.text() == '') {
     square.children('p').text(turn);
     let squareNum = square.attr('id').slice(-1);
@@ -42,11 +42,11 @@ function makeMove(square) {
   }
 }
 
-function endTurn() {
-  if (!checkWinDraw()) {
+function endTurn(gameTracker) {
+  if (!checkWinDraw(turn, gameTracker)) {
     turn = turn == turnX ? turnO : turnX;
     $('h1').text('Player ' + turn + ' Turn');
-  } else if(checkWinDraw() == 'tie') {
+  } else if(checkWinDraw(turn, gameTracker) == 'tie') {
     $('h1').text('Draw!');
     endGame();
   } else {
@@ -55,7 +55,7 @@ function endTurn() {
   }
 }
 
-function checkWinDraw() {
+const checkWinDraw = (turn, gameTracker) => {
   for ([first, second, third] of winCombos) {
     if (gameTracker[first] !== undefined && gameTracker[first] === gameTracker[second] && gameTracker[first] === gameTracker[third]) {
       return turn;
@@ -70,3 +70,6 @@ function endGame() {
     $('.start').css('display', '');
     $('.square').off();
 }
+
+exports.initializeGame = initializeGame;
+exports.checkWinDraw = checkWinDraw;
