@@ -1,0 +1,23 @@
+{
+  "name": "javascript_tictactoe",
+  "version": "1.0.0",
+  "description": "A simple game of 2-player Tic Tac Toe created for an interview.\r ***\r ## Under the Hood\r Used ES6 methods such as for...of loops, array destructuring and arrow functions.",
+  "main": "tictactoe.js",
+  "dependencies": {
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezeYaniv/tictactoe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezeYaniv/tictactoe/issues"
+  },
+  "homepage": "https://github.com/ezeYaniv/tictactoe#readme"
+}
