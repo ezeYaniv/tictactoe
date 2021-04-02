@@ -46,7 +46,7 @@ function endTurn(gameTracker) {
   if (!checkWinDraw(turn, gameTracker)) {
     turn = turn == turnX ? turnO : turnX;
     $('h1').text('Player ' + turn + ' Turn');
-  } else if(checkWinDraw(turn, gameTracker) == 'tie') {
+  } else if(checkWinDraw(turn, gameTracker) === 'tie') {
     $('h1').text('Draw!');
     endGame();
   } else {
@@ -55,14 +55,16 @@ function endTurn(gameTracker) {
   }
 }
 
-const checkWinDraw = (turn, gameTracker) => {
+const checkWinDraw = (turn, board) => {
   for ([first, second, third] of winCombos) {
-    if (gameTracker[first] !== undefined && gameTracker[first] === gameTracker[second] && gameTracker[first] === gameTracker[third]) {
+    if (board[first] !== undefined && board[first] === board[second] && board[first] === board[third]) {
       return turn;
     }
   }
-  if (gameTracker.filter((element, index) => element != null).length == 9) {
+  if (board.filter((element, index) => element != null).length == 9) {
     return 'tie';
+  } else {
+    return null;
   }
 }
 
